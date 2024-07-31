@@ -4,8 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+
+    <div class="results">
+        <p id="human-score">Your score: 0</p>
+        <p id="computer-score">Bot's score: 0</p>
+    </div>
+
+    <p class="info">First to 5 wins</p>
+
+    <div class="buttons">
+        <div class="human-choice">
+            <p class="choice-header">You chose:</p>
+            <p class="choice">N/A</p>
+        </div>
+
+        <button class="btn">Rock</button>
+        <button class="btn">Paper</button>
+        <button class="btn">Scissors</button>
+
+        <div class="computer-choice">
+            <p class="choice-header">Bot chose:</p>
+            <p class="choice">N/A</p>
+        </div>
+    </div>
+
+    <p class="round-num">Round 1</p>
 </body>
 </html>

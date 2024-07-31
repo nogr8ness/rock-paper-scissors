@@ -1,0 +1,60 @@
+body {
+    background-color: darkblue;
+    color: white;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+    margin-bottom: 50px;
+}
+
+p {
+    font-size: 28px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+button {
+    width: 150px;
+    height: 150px;
+
+    background-color: rgb(10, 0, 76);
+    border: 1px groove orange;
+    border-radius: 10px;
+
+    color: white;
+
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.human-choice, .computer-choice {
+    min-width: 300px;
+    text-align: center;
+}
+
+.choice-header {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.choice {
+    font-size: 36px;
+}
+
+.round-num, .info {
+    text-align: center;
+    margin: 50px;
+}
+
+.info {
+    font-weight: 900;
+}

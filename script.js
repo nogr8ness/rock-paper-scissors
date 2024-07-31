@@ -37,7 +37,21 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
+const txtHumanChoice = document.querySelectorAll(".choice")[0];
+const txtComputerChoice = document.querySelectorAll(".choice")[1];
+
+const txtHumanScore = document.querySelector("#human-score");
+const txtComputerScore = document.querySelector("#computer-score");
+
+const txtRound = document.querySelectorAll(".round-num")[0];
+
 function playRound(humanChoice, computerChoice) {
+
+    if(humanScore >= 5 || computerScore >= 5)
+        return;
+
+    txtHumanChoice.textContent = humanChoice;
+    txtComputerChoice.textContent = computerChoice;
 
     //Human wins
     if((humanChoice == "Rock" && computerChoice == "Scissors") || 
@@ -45,7 +59,7 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice == "Scissors" && computerChoice == "Paper")
     ) {
         humanScore++;
-        console.log("You win! " + humanChoice + " beats " + computerChoice + ".");
+        alert("You win! " + humanChoice + " beats " + computerChoice + ".");
     }
 
     //Computer wins
@@ -54,46 +68,41 @@ function playRound(humanChoice, computerChoice) {
         (computerChoice == "Scissors" && humanChoice == "Paper")
     ) {
         computerScore++;
-        console.log("You lose! " + computerChoice + " beats " + humanChoice + ".");
+        alert("You lose! " + computerChoice + " beats " + humanChoice + ".");
     }
 
     //Tie
     else {
-        console.log("You tied! Both of you chose " + humanChoice + ".");
+        alert("You tied! Both of you chose " + humanChoice + ".");
     }
 }
 
 
+const btns = document.querySelectorAll(".btn");
 
-function playGame() {
-    for(let i = 1; i <= 5; i++) {
-        console.log("\nRound " + i + " of " + "5\n");
+//Add click listener to each button
+btns.forEach((button) => {
 
-        let humanChoice = "Invalid";
+    button.addEventListener("click", function () {
+        playRound(button.textContent, getComputerChoice());
 
-        while(humanChoice == "Invalid") {
-            humanChoice = getHumanChoice();
+        txtHumanScore.textContent = "Your score: " + humanScore;
+        txtComputerScore.textContent = "Bot's score: " + computerScore;
+
+        //End game once either player reaches 5 points
+        if(humanScore == 5 || computerScore == 5) {
+            if(humanScore > computerScore) {
+                alert("\nCongratulations! You win!");
+            }
+        
+            else if(humanScore < computerScore) {
+                alert("\nSorry, you lost. Better luck next time!");
+            }
+        
+            else {
+                alert("\nYou tied!");
+            }
         }
-
-        let computerChoice = getComputerChoice();
-
-        playRound(humanChoice, computerChoice);
-    }
-
-    console.log("\nYour score: " + humanScore);
-    console.log("Computer's score: " + computerScore);
-
-    if(humanScore > computerScore) {
-        console.log("\nCongratulations! You win!");
-    }
-
-    else if(humanScore < computerScore) {
-        console.log("\nSorry, you lost. Better luck next time!");
-    }
-
-    else {
-        console.log("\nYou tied!");
-    }
-}
-
-playGame();
+    });
+        
+})
